@@ -1,0 +1,73 @@
+{
+  "name": "@staroverlay/cli",
+  "author": "sammwy",
+  "description": "CLI for StarOverlay related projects.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "bin": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.(js|ts)\"",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "jest",
+    "prepare": "husky install && yarn build",
+    "prepublishOnly": "yarn test && yarn lint",
+    "preversion": "yarn lint",
+    "version": "yarn format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "ts-jest": "ts-jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
+  },
+  "module": "lib/index.esm.js",
+  "dependencies": {
+    "@staroverlay/dom": "0.0.4",
+    "commander": "^12.1.0",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  },
+  "optionalDependencies": {
+    "vite": "^5.4.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@types/jest": "29.2.4",
+    "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "eslint": "9.9.1",
+    "husky": "9.1.5",
+    "jest": "^29.3.1",
+    "prettier": "3.3.3",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.0",
+    "typescript": "5.5.4"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staroverlay/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/staroverlay/cli/issues"
+  },
+  "keywords": [
+    "cli",
+    "api",
+    "staroverlay"
+  ],
+  "type": "module"
+}
